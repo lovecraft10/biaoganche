@@ -1,6 +1,3 @@
-# vue-admin-flask-example
-
->[vue-admin](https://github.com/taylorchen709/vue-admin)和flask前后端分离的小例子
 
 ## 本地预览
 
@@ -132,5 +129,3 @@ return jsonify({'code': 200, 'value': data_value, 'total': total})
 
 ![vue](https://s1.ax1x.com/2018/02/10/9GuZ8g.png)
 ![vue2](https://s1.ax1x.com/2018/02/10/9GuVPS.png)
-
-PS:(很多错误响应的api没处理,不影响正常操作)
