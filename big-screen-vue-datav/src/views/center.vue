@@ -6,7 +6,7 @@
         v-for="item in titleItem"
         :key="item.title"
       >
-        <p class="ml-3 colorBlue fw-b fs-xl">{{ item.title }}</p>
+        <p class="ml-3 colorBlue fw-b fs-xl" style="font-size: medium">{{ item.title }}</p>
         <div>
           <dv-digital-flop
             class="dv-dig-flop ml-1 mt-2 pl-3"
@@ -20,7 +20,7 @@
         <span>
           <icon name="chart-pie" class="text-icon"></icon>
         </span>
-        <span class="fs-xl text mx-2 mb-1 pl-3">年度负责人组件达标榜</span>
+        <span class="fs-xl text mx-2 mb-1 pl-3">排行榜</span>
         <dv-scroll-ranking-board class="dv-scr-rank-board mt-1" :config="ranking" />
       </div>
       <div class="percent">
@@ -50,6 +50,7 @@
 
 <script>
 import CenterChart from '@/components/echart/center/centerChartRate'
+import {GETCOUNT} from "../api/api";
 
 export default {
   data() {
@@ -58,7 +59,7 @@ export default {
         {
           title: '今年累计任务建次数',
           number: {
-            number: [120],
+            number: [],
             toFixed: 1,
             textAlign: 'left',
             content: '{nt}',
@@ -131,48 +132,48 @@ export default {
       ranking: {
         data: [
           {
-            name: '周口',
+            name: '啊啊啊',
             value: 55
           },
           {
-            name: '南阳',
+            name: '',
             value: 120
           },
           {
-            name: '西峡',
+            name: '',
             value: 78
           },
           {
-            name: '驻马店',
+            name: '',
             value: 66
           },
           {
-            name: '新乡',
+            name: '',
             value: 80
           },
           {
-            name: '新乡2',
+            name: '',
             value: 80
           },
           {
-            name: '新乡3',
+            name: '',
             value: 80
           },
           {
-            name: '新乡4',
+            name: '',
             value: 80
           },
           {
-            name: '新乡5',
+            name: '',
             value: 80
           },
           {
-            name: '新乡6',
+            name: '',
             value: 80
           }
         ],
         carousel: 'single',
-        unit: '人'
+        unit: ''
       },
       water: {
         data: [24, 45],
@@ -215,6 +216,35 @@ export default {
   },
   components: {
     CenterChart
+  },
+  mounted() {
+    this.getCount()
+  },
+  methods: {
+    getCount() {
+      GETCOUNT().then(res => {
+        let titleRes = []
+        let titleData = res.info
+        for (var i = 0; i<titleData.length; i++) {
+          var item = {
+            title: "",
+            number: {
+              number: [],
+              toFixed: 0,
+              content: "{nt}",
+              style: {
+                fontSize: 24,
+                fill: "#3de7c9"
+              }
+            }
+          };
+          item.title = titleData[i].title
+          item.number.number.push(titleData[i].nums)
+          titleRes.push(item);
+        }
+        this.titleItem = titleRes
+      });
+    }
   }
 }
 </script>
@@ -224,7 +254,7 @@ export default {
   display: flex;
   flex-direction: column;
   .up {
-    width: 100%;
+    width: 90%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -232,6 +262,7 @@ export default {
       border-radius: 6px;
       padding-top: 8px;
       margin-top: 8px;
+      font-size: 18px;
       width: 32%;
       height: 70px;
       .dv-dig-flop {

@@ -6,6 +6,7 @@
 
 <script>
 import Chart from './chart.vue';
+import {GETYEAR} from "../../../../api/api";
 export default {
   data () {
     return {
@@ -26,8 +27,28 @@ export default {
     Chart,
   },
   mounted () {
+    this.getYear()
   },
   methods: {
+    getYear() {
+      GETYEAR().then(res => {
+        this.cdata.xData = res.yearData
+        console.log(res.yearData)
+        console.log(res.info)
+        let yearRes = []
+        let yearFrame = res.info
+        for (var i = 0; i<yearFrame.length; i++) {
+          var seriesItem = {
+            value: [],
+            name: ""
+          }
+          seriesItem.name = yearFrame[i].yearRange
+          seriesItem.value = yearFrame[i].nums
+          yearRes.push(seriesItem)
+        }
+        this.cdata.seriesData = yearRes
+      });
+    }
   }
 }
 </script>

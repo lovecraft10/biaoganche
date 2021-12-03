@@ -11,6 +11,7 @@
 
 <script>
 import Echart from '@/common/echart'
+
 export default {
   data () {
     return {
@@ -60,7 +61,7 @@ export default {
           },
           series: [
             {
-              name: "通过率统计",
+              name: "年限占比统计",
               type: "pie",
               radius: [10, 50],
               roseType: "area",

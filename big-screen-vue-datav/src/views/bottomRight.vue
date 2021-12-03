@@ -15,16 +15,6 @@
       <div class="d-flex jc-center body-box">
         <dv-scroll-board class="dv-scr-board" :config="config" />
       </div>
-<!--      <div>-->
-<!--        <el-button type="text" @click="dialogTableVisible = true">打开嵌套表格的 Dialog</el-button>-->
-<!--        <el-dialog title="收货地址" :visible.sync="dialogTableVisible">-->
-<!--          <el-table :data="gridData">-->
-<!--            <el-table-column property="date" label="日期" width="150"></el-table-column>-->
-<!--            <el-table-column property="name" label="姓名" width="200"></el-table-column>-->
-<!--            <el-table-column property="address" label="地址"></el-table-column>-->
-<!--          </el-table>-->
-<!--        </el-dialog>-->
-<!--      </div>-->
     </div>
   </div>
 </template>
@@ -47,31 +37,15 @@ export default {
         // operator: "付斌"
         // project_name: "车辆电池拆解、电池性能测试、采购电池及安装电池（拆）"
         header: ['开始时间', '车辆id', '借用部门', '截止日期', '是否归还', '联系电话', '操作人'],
-        data: [
-          // ['组件1', 'dev-1', "<span  class='colorGrass'>↑75%</span>"],
-          // ['组件2', 'dev-2', "<span  class='colorRed'>↓33%</span>"],
-          // ['组件3', 'dev-3', "<span  class='colorGrass'>↑100%</span>"],
-          // ['组件4', 'rea-1', "<span  class='colorGrass'>↑94%</span>"]
-          // ['组件5', 'rea-2', "<span  class='colorGrass'>↑95%</span>"],
-          // ['组件6', 'fix-2', "<span  class='colorGrass'>↑63%</span>"],
-          // ['组件7', 'fix-4', "<span  class='colorGrass'>↑84%</span>"],
-          // ['组件8', 'fix-7', "<span  class='colorRed'>↓46%</span>"],
-          // ['组件9', 'dev-2', "<span  class='colorRed'>↓13%</span>"],
-          // ['组件10', 'dev-9', "<span  class='colorGrass'>↑76%</span>"]
-        ],
+        data: [],
         rowNum: 7, //表格行数
         headerHeight: 40,
         headerBGC: '#0f1325', //表头
         oddRowBGC: '#0f1325', //奇数行
         evenRowBGC: '#171c33', //偶数行
-        columnWidth: [120],
+        columnWidth: [160,80,150,150,80],
         align: ['center'],
       },
-      gridData: [{
-        date: '2016-05-02',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      }],
       dialogTableVisible: false,
       totalList: []
     }
@@ -93,7 +67,6 @@ export default {
       GETBOOK().then(res => {
         // console.log(res.info)
         let dataList = res.info
-        console.log(res.info[0])
         for (var i=0; i< dataList.length; i++) {
           let item = [];
           item.push(dataList[i].begin_date)
@@ -117,7 +90,6 @@ export default {
         //   standingData.push(values)
         // }
         // console.log(standingData)
-        console.log(standingData)
         this.config.data = standingData;
         this.totalList = res.info;
         // this.gridData = res.info[0]
@@ -135,8 +107,6 @@ export default {
       //   align: ['center'],
       //   data: standingData
       // }
-
-
 
     }
 
@@ -165,11 +135,11 @@ $box-width: 100%;
     right: 0.125rem;
   }
   .body-box {
-    border-radius: 2px;
+    border-radius: 10px;
     overflow: hidden;
     .dv-scr-board {
-      width: 800px;
-      height: 400px;
+      width: 900px;
+      height: 450px;
     }
   }
   .chart-box {

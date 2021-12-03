@@ -25,7 +25,9 @@ Base = declarative_base(metadata=metadata)
 '''
 一些数据库表的映射类
 '''
-#借用台账
+
+
+# 借用台账
 class StandingBook(Base):
     __tablename__ = 'standing_book'
     id = Column(BIGINT, primary_key=True)
@@ -50,7 +52,8 @@ class StandingBook(Base):
             result[key] = str(value)
         return result
 
-#故障台账
+
+# 故障台账
 class CarFault(Base):
     __tablename__ = 'car_fault'
     id = Column(BIGINT, primary_key=True)

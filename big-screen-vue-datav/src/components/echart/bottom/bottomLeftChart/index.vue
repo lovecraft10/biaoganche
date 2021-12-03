@@ -16,7 +16,7 @@ export default {
         numData: [],
         rateData:[]
       }
-    };
+    }
   },
   components: {
     Chart,
@@ -35,11 +35,9 @@ export default {
     // },
     getMoney() {
       GETMONEY().then(res => {
-        console.log(res)
-        console.log(res.money)
-        this.cdata.moneyData = res.money;
-        this.cdata.numData = res.nums;
-        this.cdata.rateData = res.rate;
+        this.cdata.moneyData = res.money
+        this.cdata.numData = res.nums
+        this.cdata.rateData = res.rate
       });
     }
   }

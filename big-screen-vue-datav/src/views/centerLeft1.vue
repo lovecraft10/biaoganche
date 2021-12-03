@@ -6,7 +6,7 @@
           <icon name="chart-bar" class="text-icon"></icon>
         </span>
         <div class="d-flex">
-          <span class="fs-xl text mx-2">任务通过率</span>
+          <span class="fs-xl text mx-2">购买年限统计</span>
           <dv-decoration-3 class="dv-dec-3" />
         </div>
       </div>
@@ -21,12 +21,12 @@
           :key="index"
         >
           <div class="d-flex">
-            <span class="coin">￥</span>
+            <span class="coin"></span>
             <dv-digital-flop class="dv-digital-flop" :config="item.number" />
           </div>
           <p class="text" style="text-align: center;">
             {{ item.text }}
-            <span class="colorYellow">(件)</span>
+            <span class="colorYellow"></span>
           </p>
         </div>
       </div>
@@ -44,49 +44,49 @@ export default {
           number: {
             number: [15],
             toFixed: 1,
-            textAlign: 'left',
+            textAlign: 'center',
             content: '{nt}',
             style: {
               fontSize: 24
             }
           },
-          text: '今日构建总量'
+          text: '本周新增借出'
         },
         {
           number: {
             number: [1144],
             toFixed: 1,
-            textAlign: 'left',
+            textAlign: 'center',
             content: '{nt}',
             style: {
               fontSize: 24
             }
           },
-          text: '总共完成数量'
+          text: '总借出数量'
         },
         {
           number: {
             number: [361],
             toFixed: 1,
-            textAlign: 'left',
+            textAlign: 'center',
             content: '{nt}',
             style: {
               fontSize: 24
             }
           },
-          text: '正在编译数量'
+          text: '本周入库'
         },
         {
           number: {
             number: [157],
             toFixed: 1,
-            textAlign: 'left',
+            textAlign: 'center',
             content: '{nt}',
             style: {
               fontSize: 24
             }
           },
-          text: '未通过数量'
+          text: '空闲车辆'
         }
       ]
     }
